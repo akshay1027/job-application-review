@@ -12,6 +12,7 @@ urlpatterns = [
     path("application/mark", views.markApplicationByID, name="mark-application-result"),
     path("application/update", views.updateApplicationByID, name="update-application"),
     path("application/delete", views.deleteApplicationByID, name="delete-application"),
+    path('application/resume/', views.ResumeUpdate.as_view(), name="resume_update"), 
     # path('users/<str:username>/', views.userDetails, name="user"),
     # path('users/<str:username>/update-skills',
     #      views.userSkills, name="user_skills"),

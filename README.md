@@ -28,8 +28,10 @@ Architecture/design decisons:
 
 
 
-- TODO:
+- TODO (minimum):
+1) Upload Resume and store as URL
+2) Swagger Documentation
+3) Filtering applications using keywords from skills
+
+- TODO (extra):
 1) Multiple jobs
-2) Upload Resume
-3) Swagger Documentation
-4) Filtering applications using keywords from skills

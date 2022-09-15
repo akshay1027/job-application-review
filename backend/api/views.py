@@ -1,11 +1,16 @@
+import uuid
+import random
+import os.path
+
 from rest_framework import permissions, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FileUploadParser
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.db.models import Q , Count
 
+from django.core.files.storage import default_storage
 
 from .models import Application, SkillTag
 from .serializers import ApplicationSerializer
@@ -167,3 +172,30 @@ def getRejectedApplications(request):
         pass
     except Exception as e:
         return Response({'details': f"{e}"},status=status.HTTP_204_NO_CONTENT)
+
+
+class ResumeUpdate(APIView):
+    serializer_class=ApplicationSerializer
+    parser_class=(FileUploadParser,)
+
+    def patch(self, *args, **kwargs):
+        rd = random.Random()
+        resume=self.request.FILES['resume'] 
+        extension = os.path.splitext(resume.name)[1]
+        resume.name='{}{}'.format(uuid.UUID(int=rd.getrandbits(128)), extension)
+        filename = default_storage.save(resume.name, resume)
+
+        data = self.request.data
+        id = data['id']
+        application = Application.objects.get(id=id)
+        
+        setattr(application, 'resume', filename)
+        serializer=self.serializer_class(
+            application, data={}, partial=True)
+        if serializer.is_valid():
+            res=serializer.save()
+            response={'type': 'Success', 'message': 'successfully updated your info',
+                        'results': ApplicationSerializer(res).data}
+        else:
+            response=serializer.errors
+        return Response(response)

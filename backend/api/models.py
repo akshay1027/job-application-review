@@ -15,7 +15,6 @@ class Application(models.Model):
     selected = models.BooleanField(default=False)
     collegeName = models.CharField(max_length=300, null=False, blank=False)
     skills = models.ManyToManyField(SkillTag, related_name="skill", blank=True)
-    # pkid = models.BigAutoField(primary_key=True, editable=False)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    jobId = models.CharField(max_length=100, null=False, blank=False)    
-    # links = models.URLField
+    jobId = models.CharField(max_length=100, null=False, blank=False)
+    resume = models.ImageField(blank=True, null=True)
