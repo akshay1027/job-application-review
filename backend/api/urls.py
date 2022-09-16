@@ -9,10 +9,15 @@ urlpatterns = [
     path("application/add/", views.createApplication, name="create-application"),
     path("application/get/", views.getApplicationByID, name="get-application"),
     path("application/", views.getAllApplication, name="get-all-application"),
+    path("application/search", views.searchApplications, name="search-all-application"),
+    path("application/search-skills", views.searchApplicationsBySkills, name="search-all-application"),
     path("application/mark", views.markApplicationByID, name="mark-application-result"),
     path("application/update", views.updateApplicationByID, name="update-application"),
     path("application/delete", views.deleteApplicationByID, name="delete-application"),
     path('application/resume/', views.ResumeUpdate.as_view(), name="resume_update"), 
+    path('application/selected/', views.getSelectedApplications, name="get-selected-applications"),
+    path('application/rejected/', views.getRejectedApplications, name="get-rejected-applications")
+
     # path('users/<str:username>/', views.userDetails, name="user"),
     # path('users/<str:username>/update-skills',
     #      views.userSkills, name="user_skills"),
