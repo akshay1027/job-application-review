@@ -1,3 +1,4 @@
+from email import message
 import uuid
 import random
 import os.path
@@ -11,6 +12,8 @@ from rest_framework.views import APIView
 from django.db.models import Q
 
 from django.core.files.storage import default_storage
+
+from .tasks import sendMail
 
 from .models import Application, SkillTag
 from .serializers import ApplicationSerializer
@@ -157,7 +160,6 @@ def searchApplicationsBySkills(request):
             'results': result
         }
 
-        # return paginator.get_paginated_response(serializer.data)
         return Response(response, status=status.HTTP_200_OK)
 
     except Exception as e:
@@ -242,6 +244,18 @@ def markApplicationByID(request):
             'message': 'successfully marked application',
             'results': serializer.data
         }
+        
+        # print(serializer.data['email'])
+        subject = "Thank you! Application reviewed"
+
+        if verdict == "True":
+            message = f"Congragulations! We have reviewed your application and we have decided to offer you software engineer role in our organization!"
+        else:
+            message = f"Thank you for applying! We have reviewed your application and we have decided to not move forward with your application for software engineer role in our organization!"
+
+        sendMail.delay(subject, message, serializer.data['email'])
+
+        print("returned back to function")
 
         return Response(response, status=status.HTTP_200_OK)
 

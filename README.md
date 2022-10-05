@@ -71,3 +71,9 @@
 EG: Resume uploaded: http://127.0.0.1:8000/static/resumes/3a5fa5e4-21c9-21ce-b0eb-d5d335275f2d.pdf
 
 - [Q for filtering](https://books.agiliq.com/projects/django-orm-cookbook/en/latest/query_relatedtool.html)
+
+- Mumble api
+- django documentation
+- stackoverflow
+
+job-mail
