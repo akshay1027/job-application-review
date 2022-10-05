@@ -10,7 +10,17 @@ from celery import shared_task
 @shared_task(bind=True)
 def sendMail(self, subject, message, receivers):
     try:
-        send_mail(subject, message, 'akshayar1027@gmail.com', 'akshayar1027@gmail.com', fail_silently= False)
+        # send_mail(subject, message, 'akshayar1027@gmail.com', 'akshayar1027@gmail.com', fail_silently= False)
+        send_mail(subject, message, 'akshayar1027@gmail.com', [receivers], fail_silently= False)
+        # message = "If you are liking my content, please hit the like button and do subscribe to my channel"
+        # to_email = user.email
+        # send_mail(
+        #     subject=mail_subject,
+        #     message=message,
+        #     from_email=settings.EMAIL_HOST_USER,
+        #     recipient_list=[to_email],
+        #     fail_silently=False,
+        # )
         # for i in range(1000):
         #     print("Done sending mail")
 
