@@ -34,7 +34,7 @@
 - filter all applications based on skill ✅
 - send mail after an application is marked ✅
   
-  
+
 - TODO (minimum):
 1) It should have api endpoints to create, retrieve, update, delete and list the information of an applicant. ✅
 2) It should also have a feature to mark applicants Selected or rejected. ✅
@@ -62,6 +62,11 @@
 
 ![IMG_20220916_115557](https://user-images.githubusercontent.com/65683151/190665482-4d2364ac-7f3f-460f-9030-a276984b886f.jpg)
 ![IMG_20220916_115544](https://user-images.githubusercontent.com/65683151/190665493-6a3303e8-c3cd-49ba-b476-1f6631e67234.jpg)
+
+
+## Celery worker:
+
+![image](https://user-images.githubusercontent.com/65683151/194759392-7c68376e-42ed-4d44-b027-c9c635c9431d.png)
 
 
 ## Architecture/design decisons:
