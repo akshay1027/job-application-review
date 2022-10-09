@@ -254,6 +254,7 @@ def markApplicationByID(request):
             message = f"Thank you for applying! We have reviewed your application and we have decided to not move forward with your application for software engineer role in our organization!"
 
         sendMail.delay(subject, message, serializer.data['email'])
+        # sendMail.delay()
 
         print("returned back to function")
 

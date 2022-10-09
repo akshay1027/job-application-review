@@ -1,6 +1,21 @@
+## Tech stack:
+- DRF| SQLite| Rabbitmq| Celery| Docker| Postman
+
+
+## Rabbitmq (in WSL):
+- sudo apt-get install rabbitmq-server
+- sudo systemctl enable rabbitmq-server
+- sudo service rabbitmq-server start OR sudo systemctl start rabbitmq-server
+- sudo service rabbitmq-server status OR systemctl status rabbitmq-server
+
+## Celery:
+- celery purge
+- celery -A backend worker --pool=solo -l info
+
+## install fresh and not from cache 
+- pip install celery --no-cache-dir
+
 ## contact info:
-- phoneNumber: +91 8056701263
-- emailId : akshayar1027@gmail.com
 - linkedin : https://www.linkedin.com/in/akshayrr1027/
 
 
@@ -17,7 +32,9 @@
 - get all rejected applications ✅
 - filter all applications by name and or email ✅
 - filter all applications based on skill ✅
-
+- send mail after an application is marked ✅
+  
+  
 - TODO (minimum):
 1) It should have api endpoints to create, retrieve, update, delete and list the information of an applicant. ✅
 2) It should also have a feature to mark applicants Selected or rejected. ✅
@@ -30,7 +47,8 @@
 - TODO (my own):
 1) Extra filters ✅
 2) Extra update APIs ✅
-3) Multiple jobs (it is a job (single job) review system but still mutiple jobs feature can be added in future) ❌
+3) Multiple jobs (it is a job (single job) review system but still mutiple jobs feature can be added in future) ❌  
+4) Send mail after application is marked ✅
 
 
 ## Postman documentation of API
